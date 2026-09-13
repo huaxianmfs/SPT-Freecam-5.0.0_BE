@@ -1,33 +1,80 @@
-# Freecam
+Terkoiz Freecam — SPT 5.0 BE
 
-A BepInEx plugin for SPT-AKI that allows you to detach the camera and fly around freely in Escape From Tarkov.
+适用于 SPT 5.0.0 BE / EFT 1.1.5.0.47242 的 Freecam 移植版。
 
-### Controls
+功能
++：开启/关闭自由视角
+.：切换相机控制权
+Enter：将玩家传送到当前相机位置
+*：隐藏/显示 UI
+WASD / 方向键：移动相机
+鼠标：旋转视角
+Shift：加速移动
+Q/E、R/F：上下移动
+鼠标滚轮：前后移动相机
+支持记忆上次自由相机位置
 
-The default controls are as follows:
-- Keypad Plus - toggle free camera mode
-- Keypad Enter - teleport player to camera position
-- Keypad Multiply - toggle UI
-
-If you need to change them, press F12 in-game and expand the `Freecam #.#.#` section and configure your keybinds there.
-Alternatively, you can find the `com.terkoiz.freecam.cfg` file in your `BepInEx/config/` folder after you've started up the game at least once with Freecam installed, and change the keybinds there.
+提醒：我没有移植免摔落功能
+提醒：我没有移植免摔落功能
+提醒：我没有移植免摔落功能
 
 
-### How to install
+安装
 
-1. Download the latest release here: [link](https://dev.sp-tarkov.com/Terkoiz/Freecam/releases) -OR- build from source (instructions below)
-2. Simply extract the zip file contents into your root SPT-AKI folder (where EscapeFromTarkov.exe is).
-3. Your `BepInEx/plugins` folder should now contain a `Terkoiz.Freecam.dll` file inside.
+将发布包中的：
 
-### Known issues
+Terkoiz.Freecam.dll
 
-1. When teleporting to camera position, the camera rotation gets copied exactly, potentially causing the player model to tilt
-2. Game version UI element is not hidden when toggling UI
-3. When flying to distant parts of the map in freecam mode, LODs are not triggered (these seem to follow the player)
+放入：
 
-### How to build from source
+SPT根目录\BepInEx\plugins\
 
-1. Download/clone this repository
-2. Open your current SPT directory and copy all files from `\EscapeFromTarkov_Data\Managed` into this solution's `\References\EFT_Managed` folder.
-3. Rebuild the project in the Release configuration.
-4. Grab the `Terkoiz.Freecam.dll` file from the `bin/Release` folder and use it wherever. Refer to the "How to install" section if you need help here.
+从源码编译
+
+项目提供了 build.bat，无需手动输入编译命令。
+
+使用方法
+确认已经安装对应的 .NET SDK。
+确认项目中的 SPT 5.0 BE DLL 引用路径正确。
+双击：
+build.bat
+
+或者在项目目录打开 CMD：
+
+build.bat
+
+脚本会自动执行编译。
+
+编译成功后，将生成的：
+
+Terkoiz.Freecam.dll
+
+复制到：
+
+SPT根目录\BepInEx\plugins\
+
+即可测试。
+
+相对于原版的修改
+
+本项目基于 TerkoizLT/SPT-Freecam 修改。
+
+原版针对旧版 Mono SPT，本版本针对 SPT 5.0 BE 的 IL2CPP 环境进行了移植。
+
+主要修改：
+
+将 FreecamController 改为 IL2CPP 兼容的 MonoBehaviour
+增加 IL2CPP 类型注册
+适配 SPT 5.0 的 PlayerCameraController
+适配新的 GameWorld / MainPlayer 获取方式
+使用 PlayerCameraController.ExternalControl 接管相机
+适配 GamePlayerOwner 的控制
+修改初始化时机，使其等待 MainPlayer 和相机创建完成
+保留原版 Freecam 的主要操作逻辑和功能
+
+
+致谢
+
+原项目：TerkoizLT/SPT-Freecam
+
+感谢原作者的 Freecam 实现。
