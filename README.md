@@ -1,8 +1,9 @@
+在gpt和deepseek的帮助下，完成了对freecam的移植
 Terkoiz Freecam — SPT 5.0 BE
 
 适用于 SPT 5.0.0 BE / EFT 1.1.5.0.47242 的 Freecam 移植版。
 
-功能
+✨功能
 +：开启/关闭自由视角
 .：切换相机控制权
 Enter：将玩家传送到当前相机位置
@@ -10,23 +11,18 @@ Enter：将玩家传送到当前相机位置
 WASD / 方向键：移动相机
 鼠标：旋转视角
 Shift：加速移动
-Q/E、R/F：上下移动
+Q/E和R/F：上下移动
 鼠标滚轮：前后移动相机
-支持记忆上次自由相机位置
+记忆上次自由相机位置（单局内）
 
+⚠️
 提醒：我没有移植免摔落功能
-提醒：我没有移植免摔落功能
-提醒：我没有移植免摔落功能
-
 
 安装
 
-将发布包中的：
-
-Terkoiz.Freecam.dll
+将Terkoiz.Freecam.zip解压
 
 放入：
-
 SPT根目录\BepInEx\plugins\
 
 从源码编译
@@ -49,13 +45,7 @@ build.bat
 
 Terkoiz.Freecam.dll
 
-复制到：
-
-SPT根目录\BepInEx\plugins\
-
-即可测试。
-
-相对于原版的修改
+不过我觉得什么都不改的话，路径应该会报错
 
 本项目基于 TerkoizLT/SPT-Freecam 修改。
 
